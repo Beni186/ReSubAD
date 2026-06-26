@@ -18,6 +18,7 @@ from .br35h import Br35h_CLS_NAMES,Br35hDataset,Br35h_ROOT
 from .mvtec3d import MVTEC3D_CLS_NAMES, MVTec3DDataset, MVTEC3D_ROOT
 from .webad import WEBAD_CLS_NAMES, WebADDataset, WEBAD_ROOT
 from .real3d import REAL3D_CLS_NAMES, Real3DDataset, REAL3D_ROOT
+from .his import HIS_CLS_NAMES, HISDataset, HIS_ROOT
 from torch.utils.data import ConcatDataset
 
 dataset_dict = {
@@ -30,6 +31,7 @@ dataset_dict = {
     'dtd': (DTD_CLS_NAMES, DTDDataset, DTD_ROOT),
     'endo': (ENDO_CLS_NAMES, EndoDataset, ENDO_ROOT),
     'headct': (HEADCT_CLS_NAMES, HEADCTDataset, HEADCT_ROOT),
+    'his': (HIS_CLS_NAMES, HISDataset, HIS_ROOT),
     'isic': (ISIC_CLS_NAMES, ISICDataset, ISIC_ROOT),
     'ksdd2': (KSDD2_CLS_NAMES, KSDD2Dataset, KSDD2_ROOT),
     'kvasir': (KVASIR_CLS_NAMES, KvasirDataset, KVASIR_ROOT),
@@ -43,7 +45,7 @@ dataset_dict = {
     'real3d': (REAL3D_CLS_NAMES, Real3DDataset, REAL3D_ROOT),
 }
 
-def get_data(dataset_type_list, transform, target_transform, training):
+def get_data(dataset_type_list, transform, target_transform, training, split=None):
     if not isinstance(dataset_type_list, list):
         dataset_type_list = [dataset_type_list]
 
@@ -57,7 +59,8 @@ def get_data(dataset_type_list, transform, target_transform, training):
                 clsnames=dataset_cls_names,
                 transform=transform,
                 target_transform=target_transform,
-                training=training
+                training=training,
+                split=split
             )
 
             dataset_cls_names_list.append(dataset_cls_names)

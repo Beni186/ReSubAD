@@ -9,8 +9,9 @@ BrainMRI_CLS_NAMES = [
 BrainMRI_ROOT = os.path.join(DATA_ROOT, 'BrainMRI')
 
 class BrainMRIDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=BrainMRI_CLS_NAMES, aug_rate=0.0, root=BrainMRI_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=BrainMRI_CLS_NAMES, aug_rate=0.0, root=BrainMRI_ROOT, training=True, split=None):
         super(BrainMRIDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )

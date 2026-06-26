@@ -19,6 +19,7 @@ class KvasirDataset(PairedMaskDataset):
         aug_rate=0.0,
         root=KVASIR_ROOT,
         training=True,
+        split=None,
     ):
         super(KvasirDataset, self).__init__(
             clsnames=clsnames,
@@ -27,4 +28,5 @@ class KvasirDataset(PairedMaskDataset):
             root=root,
             aug_rate=aug_rate,
             training=training,
+            split=split
         )

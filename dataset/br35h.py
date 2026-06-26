@@ -10,9 +10,10 @@ Br35h_CLS_NAMES = [
 Br35h_ROOT = os.path.join(DATA_ROOT, 'Br35h_anomaly_detection')
 
 class Br35hDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=Br35h_CLS_NAMES, aug_rate=0.0, root=Br35h_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=Br35h_CLS_NAMES, aug_rate=0.0, root=Br35h_ROOT, training=True, split=None):
         super(Br35hDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )
 

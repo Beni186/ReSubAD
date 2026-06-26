@@ -19,6 +19,7 @@ class EndoDataset(PairedMaskDataset):
         aug_rate=0.0,
         root=ENDO_ROOT,
         training=True,
+        split=None,
     ):
         super(EndoDataset, self).__init__(
             clsnames=clsnames,
@@ -27,4 +28,5 @@ class EndoDataset(PairedMaskDataset):
             root=root,
             aug_rate=aug_rate,
             training=training,
+            split=split
         )

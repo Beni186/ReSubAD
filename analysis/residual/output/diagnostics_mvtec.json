@@ -1,0 +1,41 @@
+{
+  "layer_18": {
+    "n_patches": 47791,
+    "cos_qn_mean": -0.3081040382385254,
+    "cos_qn_normal": -0.3544418513774872,
+    "cos_qn_anomaly": -0.07019980251789093,
+    "rnorm_normal": 1.6415789127349854,
+    "rnorm_anomaly": 1.4467045068740845,
+    "auroc_rawdist": 0.1864545918367347,
+    "auroc_rnorm": 0.18669042484918497,
+    "auroc_energy": 0.8561655644333205,
+    "fisher_class_normalonly_q": 0.2661175043641833,
+    "fisher_class_normalonly_r": 0.265729450375579
+  },
+  "layer_21": {
+    "n_patches": 47117,
+    "cos_qn_mean": -0.3460807204246521,
+    "cos_qn_normal": -0.4243329167366028,
+    "cos_qn_anomaly": 0.09372391551733017,
+    "rnorm_normal": 1.682261347770691,
+    "rnorm_anomaly": 1.32035231590271,
+    "auroc_rawdist": 0.10898089960657581,
+    "auroc_rnorm": 0.10889189440775607,
+    "auroc_energy": 0.8993433469158354,
+    "fisher_class_normalonly_q": 0.2869016944549342,
+    "fisher_class_normalonly_r": 0.2839974763498936
+  },
+  "layer_24": {
+    "n_patches": 48766,
+    "cos_qn_mean": -0.33259373903274536,
+    "cos_qn_normal": -0.4447806775569916,
+    "cos_qn_anomaly": 0.17932501435279846,
+    "rnorm_normal": 1.6916890144348145,
+    "rnorm_anomaly": 1.2361485958099365,
+    "auroc_rawdist": 0.11856035677618071,
+    "auroc_rnorm": 0.11649827173169063,
+    "auroc_energy": 0.9246746249714807,
+    "fisher_class_normalonly_q": 0.2625493477162179,
+    "fisher_class_normalonly_r": 0.26239643192538936
+  }
+}

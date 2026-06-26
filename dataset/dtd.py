@@ -9,8 +9,9 @@ DTD_CLS_NAMES = [
 DTD_ROOT = os.path.join(DATA_ROOT, 'DTD-Synthetic')
 
 class DTDDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=DTD_CLS_NAMES, aug_rate=0.0, root=DTD_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=DTD_CLS_NAMES, aug_rate=0.0, root=DTD_ROOT, training=True, split=None):
         super(DTDDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )

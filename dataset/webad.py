@@ -77,14 +77,15 @@ WEBAD_CLS_NAMES = [
 WEBAD_ROOT = os.path.join(DATA_ROOT, 'webad')
 
 class WebADDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=None, aug_rate=0.0, root=WEBAD_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=None, aug_rate=0.0, root=WEBAD_ROOT, training=True, split=None):
         # 如果沒有指定類別名稱，則動態獲取
         if clsnames is None:
             clsnames = self._get_available_classes(root)
         
         super(WebADDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )
     
     def _get_available_classes(self, root):

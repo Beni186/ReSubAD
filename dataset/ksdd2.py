@@ -5,7 +5,7 @@ from config import DATA_ROOT
 
 """Dataset source: KolektorSDD2."""
 KSDD2_CLS_NAMES = [
-    "SDD",
+    "Metal",
 ]
 KSDD2_ROOT = os.path.join(DATA_ROOT, "ksdd2")
 
@@ -19,6 +19,7 @@ class KSDD2Dataset(BaseDataset):
         aug_rate=0.0,
         root=KSDD2_ROOT,
         training=True,
+        split=None,
     ):
         super(KSDD2Dataset, self).__init__(
             clsnames=clsnames,
@@ -27,4 +28,5 @@ class KSDD2Dataset(BaseDataset):
             root=root,
             aug_rate=aug_rate,
             training=training,
+            split=split
         )

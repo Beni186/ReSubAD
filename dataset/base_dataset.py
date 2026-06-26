@@ -30,19 +30,22 @@ class DataSolver:
 
 
 class BaseDataset(data.Dataset):
-    def __init__(self, clsnames, transform, target_transform, root, aug_rate=0., training=True):
+    def __init__(self, clsnames, transform, target_transform, root, aug_rate=0., training=True, split=None):
         self.root = root
         self.transform = transform
         self.target_transform = target_transform
         self.aug_rate = aug_rate
         self.training = training
+        self.split = split or 'test'
         self.data_all = []
         self.cls_names = clsnames
 
         solver = DataSolver(root, clsnames)
         meta_info = solver.run()
 
-        self.meta_info = meta_info['test']  # Only utilize the test dataset for both training and testing
+        if self.split not in meta_info:
+            raise KeyError(f"Split '{self.split}' not found in meta.json. Available splits: {list(meta_info.keys())}")
+        self.meta_info = meta_info[self.split]
         for cls_name in self.cls_names:
             self.data_all.extend(self.meta_info[cls_name])
 

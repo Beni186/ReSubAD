@@ -13,9 +13,10 @@ VISA_ROOT = os.path.join(DATA_ROOT, 'VisA_20220922')
 
 # aug rate 0.0 -> 0.1
 class VisaDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=VISA_CLS_NAMES, aug_rate=0.0, root=VISA_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=VISA_CLS_NAMES, aug_rate=0.0, root=VISA_ROOT, training=True, split=None):
         super(VisaDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )
 

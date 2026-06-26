@@ -1,0 +1,16 @@
+{
+  "dataset": "mvtec",
+  "layer": 24,
+  "reference_policy": "all",
+  "n_points": 30000,
+  "n_anomaly": 11954,
+  "n_normal": 18046,
+  "fisher_normal_vs_anomaly": {
+    "q_space": 0.436656890963619,
+    "r_space": 0.4288609793816217
+  },
+  "fisher_class_separability": {
+    "q_space": 0.2297865129402986,
+    "r_space": 0.22940542843145742
+  }
+}

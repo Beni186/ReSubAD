@@ -151,34 +151,54 @@ def main():
 
     preprocess, _ = get_transform(args)
     target_transform = build_mask_transform(args.image_size)
-    dataset_cls_names, train_dataset, dataset_root = get_data(args.dataset, preprocess, target_transform, training=True)
+    dataset_cls_names, bank_dataset, dataset_root = get_data(
+        args.dataset,
+        preprocess,
+        target_transform,
+        training=False,
+        split="train",
+    )
+    _, train_dataset, _ = get_data(
+        args.dataset,
+        preprocess,
+        target_transform,
+        training=True,
+        split="test",
+    )
     class_to_id = {str(cls_name): idx for idx, cls_name in enumerate(dataset_cls_names)}
 
-    bank_loader = DataLoader(
-        train_dataset,
-        batch_size=args.batch_size,
-        shuffle=False,
-        num_workers=args.num_workers,
-    )
-    logger.info("Phase 1: building normal anchor bank...")
-    anchor_bank = build_normal_anchor_bank(
-        clip_model=clip_model,
-        dataloader=bank_loader,
-        levels=args.levels,
-        class_to_id=class_to_id,
-        device=device,
-        candidates_per_class=args.bank_candidates_per_class,
-        anchors_per_class=args.bank_anchors_per_class,
-        bank_reduce=args.bank_reduce,
-        coreset_projection_dim=args.coreset_projection_dim,
-        coreset_distance=args.coreset_distance,
-        source=args.normal_bank_source,
-        mask_threshold=args.mask_threshold,
-        dpam_layer=args.dpam_layer,
-        use_average_neighbor=not args.no_average_neighbor,
-        seed=args.seed,
-        max_batches=args.max_bank_batches,
-    )
+    memory_bank_path = save_dir / "memory_bank.pth"
+    if memory_bank_path.is_file():
+        logger.info(f"Phase 1: loading normal anchor bank from {memory_bank_path}")
+        anchor_bank = torch.load(memory_bank_path, map_location="cpu")
+    else:
+        bank_loader = DataLoader(
+            bank_dataset,
+            batch_size=args.batch_size,
+            shuffle=False,
+            num_workers=args.num_workers,
+        )
+        logger.info("Phase 1: building normal anchor bank...")
+        anchor_bank = build_normal_anchor_bank(
+            clip_model=clip_model,
+            dataloader=bank_loader,
+            levels=args.levels,
+            class_to_id=class_to_id,
+            device=device,
+            candidates_per_class=args.bank_candidates_per_class,
+            anchors_per_class=args.bank_anchors_per_class,
+            bank_reduce=args.bank_reduce,
+            coreset_projection_dim=args.coreset_projection_dim,
+            coreset_distance=args.coreset_distance,
+            source=args.normal_bank_source,
+            mask_threshold=args.mask_threshold,
+            dpam_layer=args.dpam_layer,
+            use_average_neighbor=not args.no_average_neighbor,
+            seed=args.seed,
+            max_batches=args.max_bank_batches,
+        )
+        torch.save(anchor_bank, memory_bank_path)
+        logger.info(f"Saved normal anchor bank to {memory_bank_path}")
     for layer, stats in zip(args.levels, anchor_bank["stats"]):
         total_anchors = sum(item["anchors"] for item in stats.values())
         logger.info(f"Layer {layer} normal anchors: {total_anchors}")

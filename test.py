@@ -29,6 +29,7 @@ from AnomalyCLIP_lib import get_similarity_map  # noqa: E402
 from AnomalyCLIP_lib import load as ac_load  # noqa: E402
 from model.subspace import SubspaceAnomalyHead, class_names_to_ids  # noqa: E402
 from utils import get_transform  # noqa: E402
+from utils import visualizer
 
 
 def parse_args():
@@ -220,6 +221,9 @@ def main():
                 reference_policy,
                 sigma=args.sigma,
             )
+            # visualization
+            visualizer(batch["img_path"], np.array(maps), args.image_size, args.save_path, cls_names)
+
             masks, maps = resize_metric_arrays(masks, maps, args.metric_image_size)
 
             for sample_idx, cls_name in enumerate(cls_names):

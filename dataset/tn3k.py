@@ -9,10 +9,11 @@ TN3K_CLS_NAMES = [
 TN3K_ROOT = os.path.join(DATA_ROOT, 'TN3K')
 
 class TN3KDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=TN3K_CLS_NAMES, aug_rate=0.0, root=TN3K_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=TN3K_CLS_NAMES, aug_rate=0.0, root=TN3K_ROOT, training=True, split=None):
         super(TN3KDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )
 
 

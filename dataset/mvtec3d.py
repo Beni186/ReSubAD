@@ -11,8 +11,9 @@ MVTEC3D_CLS_NAMES = [
 MVTEC3D_ROOT = os.path.join(DATA_ROOT, 'mvtec3d')
 
 class MVTec3DDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=MVTEC3D_CLS_NAMES, aug_rate=0.0, root=MVTEC3D_ROOT, training=True):
+    def __init__(self, transform, target_transform, clsnames=MVTEC3D_CLS_NAMES, aug_rate=0.0, root=MVTEC3D_ROOT, training=True, split=None):
         super(MVTec3DDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
-            root=root, aug_rate=aug_rate, training=training
+            root=root, aug_rate=aug_rate, training=training,
+            split=split
         )

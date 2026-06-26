@@ -12,6 +12,7 @@ class PairedMaskDataset(BaseDataset):
         root,
         aug_rate=0.0,
         training=True,
+        split=None,
         image_dir="images",
         mask_dir="masks",
         image_exts=(".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"),
@@ -26,6 +27,7 @@ class PairedMaskDataset(BaseDataset):
                 root=root,
                 aug_rate=aug_rate,
                 training=training,
+            split=split
             )
             return
 
