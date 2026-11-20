@@ -48,7 +48,6 @@ python train.py \
   --save_path ckpt/visa \
   --epochs 2 \
   --batch_size 4 \
-  --levels 18 21 24 
 ```
 
 The command saves the normal reference bank and epoch checkpoints under `ckpt/visa/`.
@@ -63,7 +62,6 @@ python test.py \
   --pretrained AnomalyCLIP_lib/ViT-L-14-336px.pt \
   --checkpoint ckpt/visa/epoch_2.pth \
   --save_path ckpt/visa/mvtec_test \
-  --levels 18 21 24 \
   --batch_size 4 \
 ```
 
