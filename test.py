@@ -15,20 +15,20 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from config import (  # noqa: E402
+from config import (  
     DEFAULT_BATCH_SIZE,
     DEFAULT_CLIP_MODEL,
     DEFAULT_CLIP_PRETRAINED,
     DEFAULT_DATASET,
     DEFAULT_IMAGE_SIZE,
 )
-from dataset import get_data  # noqa: E402
-from eval import compute_image_metrics, compute_pixel_metrics  # noqa: E402
-from logger import Logger  # noqa: E402
-from AnomalyCLIP_lib import get_similarity_map  # noqa: E402
-from AnomalyCLIP_lib import load as ac_load  # noqa: E402
-from model.subspace import SubspaceAnomalyHead, class_names_to_ids  # noqa: E402
-from utils import get_transform  # noqa: E402
+from dataset import get_data  
+from eval import compute_image_metrics, compute_pixel_metrics  
+from logger import Logger  
+from AnomalyCLIP_lib import get_similarity_map  
+from AnomalyCLIP_lib import load as ac_load  
+from model.subspace import SubspaceAnomalyHead, class_names_to_ids  
+from utils import get_transform 
 from utils import visualizer
 
 
@@ -45,7 +45,7 @@ def parse_args():
     parser.add_argument("--save_path", type=str, default="./outputs_subspace")
     parser.add_argument("--save_metrics", type=str, default="")
     parser.add_argument("--sigma", type=int, default=10)
-    parser.add_argument("--pixel_weight", type=float, default=0.5)
+    parser.add_argument("--pixel_weight", type=float, default=0.8)
     parser.add_argument(
         "--metric_image_size",
         type=int,

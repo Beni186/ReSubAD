@@ -16,26 +16,26 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from config import (  # noqa: E402
+from config import (  
     DEFAULT_BATCH_SIZE,
     DEFAULT_CLIP_MODEL,
     DEFAULT_CLIP_PRETRAINED,
     DEFAULT_DATASET,
     DEFAULT_IMAGE_SIZE,
 )
-from dataset import get_data  # noqa: E402
-from AnomalyCLIP_lib import get_similarity_map  # noqa: E402
-from AnomalyCLIP_lib import load as ac_load  # noqa: E402
-from logger import Logger  # noqa: E402
-from loss import BinaryDiceLoss, BinaryFocalLoss, FocalLoss  # noqa: E402
-from model.clip_utils import build_mask_transform  # noqa: E402
-from model.subspace import (  # noqa: E402
+from dataset import get_data  
+from AnomalyCLIP_lib import get_similarity_map  
+from AnomalyCLIP_lib import load as ac_load  
+from logger import Logger  
+from loss import BinaryDiceLoss, BinaryFocalLoss, FocalLoss  
+from model.clip_utils import build_mask_transform  
+from model.subspace import (  
     SubspaceAnomalyHead,
     build_normal_anchor_bank,
     class_names_to_ids,
     mask_to_patch_labels,
 )
-from utils import get_transform  # noqa: E402
+from utils import get_transform 
 
 
 def setup_seed(seed):
@@ -63,8 +63,8 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=111)
     parser.add_argument("--dpam_layer", type=int, default=20)
 
-    parser.add_argument("--proj_dim", type=int, default=512)
-    parser.add_argument("--subspace_dim", type=int, default=32)
+    parser.add_argument("--proj_dim", type=int, default=768)
+    parser.add_argument("--subspace_dim", type=int, default=30)
     parser.add_argument("--normal_topk", type=int, default=5)
     parser.add_argument("--normal_temperature", type=float, default=0.07)
     parser.add_argument("--reference_policy", choices=["all", "same_class", "exclude_same_class"], default="all")
@@ -75,8 +75,8 @@ def parse_args():
     parser.add_argument("--bank_reduce", choices=["kmeans", "reservoir", "coreset"], default="reservoir")
     parser.add_argument("--coreset_projection_dim", type=int, default=128)
     parser.add_argument("--coreset_distance", choices=["euclidean", "cosine"], default="euclidean")
-    parser.add_argument("--bank_candidates_per_class", type=int, default=4000)
-    parser.add_argument("--bank_anchors_per_class", type=int, default=256)
+    parser.add_argument("--bank_candidates_per_class", type=int, default=20000)
+    parser.add_argument("--bank_anchors_per_class", type=int, default=2000)
     parser.add_argument("--mask_threshold", type=float, default=0.5)
 
     parser.add_argument("--image_weight", type=float, default=1.0)
