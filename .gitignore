@@ -1,4 +1,4 @@
 ckpt/
 __pycache__/
-model/ViT-L-14-336px.pt
+AnomalyCLIP_lib/ViT-L-14-336px.pt
 analysis/visualization
