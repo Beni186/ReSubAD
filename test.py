@@ -222,7 +222,7 @@ def main():
                 sigma=args.sigma,
             )
             # visualization
-            visualizer(batch["img_path"], np.array(maps), args.image_size, args.save_path, cls_names)
+            # visualizer(batch["img_path"], np.array(maps), args.image_size, args.save_path, cls_names)
 
             masks, maps = resize_metric_arrays(masks, maps, args.metric_image_size)
 

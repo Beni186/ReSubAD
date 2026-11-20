@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument("--no_normalize_input", action="store_true")
 
     parser.add_argument("--normal_bank_source", choices=["normal_images", "all_normal_regions"], default="normal_images")
-    parser.add_argument("--bank_reduce", choices=["kmeans", "reservoir", "coreset"], default="kmeans")
+    parser.add_argument("--bank_reduce", choices=["kmeans", "reservoir", "coreset"], default="reservoir")
     parser.add_argument("--coreset_projection_dim", type=int, default=128)
     parser.add_argument("--coreset_distance", choices=["euclidean", "cosine"], default="euclidean")
     parser.add_argument("--bank_candidates_per_class", type=int, default=4000)
@@ -82,7 +82,7 @@ def parse_args():
     parser.add_argument("--image_weight", type=float, default=1.0)
     parser.add_argument("--image_fusion_weight", type=float, default=1.0)
     parser.add_argument("--seg_weight", type=float, default=1.0)
-    parser.add_argument("--rec_weight", type=float, default=0.1)
+    parser.add_argument("--rec_weight", type=float, default=0.0)
     parser.add_argument("--energy_weight", type=float, default=0.5)
     parser.add_argument("--orth_weight", type=float, default=0.01)
     parser.add_argument("--energy_margin", type=float, default=0.5)
@@ -156,7 +156,7 @@ def main():
         preprocess,
         target_transform,
         training=False,
-        split="train",
+        split="test",
     )
     _, train_dataset, _ = get_data(
         args.dataset,

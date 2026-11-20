@@ -12,7 +12,7 @@ MVTEC_CLS_NAMES = [
 MVTEC_ROOT = os.path.join(DATA_ROOT, 'mvtec_anomaly_detection')
 
 class MVTecDataset(BaseDataset):
-    def __init__(self, transform, target_transform, clsnames=MVTEC_CLS_NAMES, aug_rate=0.2, root=MVTEC_ROOT, training=True, split=None):
+    def __init__(self, transform, target_transform, clsnames=MVTEC_CLS_NAMES, aug_rate=0.0, root=MVTEC_ROOT, training=True, split=None):
         super(MVTecDataset, self).__init__(
             clsnames=clsnames, transform=transform, target_transform=target_transform,
             root=root, aug_rate=aug_rate, training=training,
