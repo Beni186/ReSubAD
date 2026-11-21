@@ -64,5 +64,5 @@ python test.py \
   --save_path ckpt/visa/mvtec_test \
   --batch_size 4 \
 ```
-
+You can download the [checkpoint trained on VisA](https://drive.google.com/file/d/1GJ0gucTUvC0WTmPtRxz796VpnpRcUDql/view?usp=drive_link) and place it at `ckpt`. The checkpoint includes the trained model and its normal reference bank.
 The evaluation reports per-class and average image-level AUROC/AP and pixel-level AUROC/AP/AUPRO. Metrics can also be saved as JSON using `--save_metrics`.
